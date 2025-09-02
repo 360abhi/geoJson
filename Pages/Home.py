@@ -20,11 +20,23 @@ class Home:
         self.page = page
 
     # ===== Actions =====
+
+    def zoom(self,zoom:str):
+        actions = zoom.split(';')
+        for act in actions:
+            if act == 'zoom_in':
+                self.click_zoom_in()
+            else:
+                self.click_zoom_out()
+
     def click_zoom_in(self):
         self.page.locator(self.zoomin).click()
+        self.page.wait_for_timeout(500)
 
     def click_zoom_out(self):
         self.page.locator(self.zoomout).click()
+        self.page.wait_for_timeout(500)
+
 
     def select_marker_tool(self):
         self.page.locator(self.marker).click()

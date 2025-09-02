@@ -1,6 +1,7 @@
 import pytest
 from pathlib import Path
-import os,sys
+import os, sys
+
 root = Path(__file__).parent.parent.absolute()
 sys.path.append(str(root))
 print(root)
@@ -10,20 +11,20 @@ from utils.validation import Validations
 from Pages.Home import Home
 from Configuration.ConfigVariables import ConfigVariables
 
-@pytest.mark.parametrize("test_case", CommonUtils().load(ConfigVariables.MARKER_DATA))
-def test_markers(page: Page, test_case):
+
+@pytest.mark.parametrize("test_case", CommonUtils().load(ConfigVariables.ZOOM_DATA))
+def test_zoom(page: Page, test_case):
     try:
         validations = Validations(page)
         home = Home(page)
         page.goto(test_case['map_url'])
         validations.validate_map_loaded(test_case['tc_id'])
-        home.select_marker_tool()
-        home.place_marker_by_ratio(city_name=test_case['city_name'])
-        validations.verify_marker_exists_in_editor(test_case['expected_feature']['coordinates'])
+        home.zoom(test_case['action'])
+        validations.validate_zoom_level(test_case['expected_zoom'],tc_id=test_case['tc_id'])
     except Exception as exc:
         print(str(exc))
         raise exc
 
-    
+
 
 
