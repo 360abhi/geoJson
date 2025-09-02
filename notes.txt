@@ -1,0 +1,122 @@
+Core Features You Can Test
+1. Page & Map Load
+
+Verify the map canvas renders.
+
+Verify zoom controls (+/-) exist and work.
+
+Verify map can be dragged.
+
+2. Toolbar Tools
+
+The toolbar has multiple drawing tools (top bar):
+
+Point → Add a marker.
+
+LineString → Draw line between multiple points.
+
+Polygon → Draw polygon (triangle, square).
+
+Delete → Remove shapes.
+
+✅ Test cases:
+
+Add a Point (e.g., Mumbai) → Verify it appears in editor JSON.
+
+Add a LineString (draw 2-3 clicks) → Verify JSON contains "LineString".
+
+Add a Polygon (3+ clicks, close shape) → Verify JSON contains "Polygon".
+
+Delete a shape → Verify JSON is cleared.
+
+3. GeoJSON Editor (Right-hand Panel)
+
+JSON updates automatically when shapes are added/removed.
+
+Editing JSON manually should update the map.
+
+Invalid JSON should show an error message.
+
+✅ Test cases:
+
+After adding marker → JSON contains "Point".
+
+Manually edit coordinates in JSON → marker moves.
+
+Enter invalid JSON → verify error popup.
+
+4. Menus (Top Left “Menu” button)
+
+New → New map → clears map + JSON.
+
+Save → GitHub / Gist (if logged in).
+
+Open → File upload (upload local GeoJSON).
+
+Share → GeoJSON URL.
+
+✅ Test cases:
+
+"New" clears editor + map.
+
+"Save" requires login (check for login modal).
+
+Upload a valid file → verify it appears on map.
+
+5. Map Controls
+
+Zoom in/out buttons.
+
+Fullscreen toggle.
+
+Search box → enter "Mumbai" → map pans to Mumbai.
+
+✅ Test cases:
+
+Zoom in → verify map scale changes.
+
+Search for "Delhi" → verify marker moves to Delhi area.
+
+6. Import/Export
+
+Paste GeoJSON into editor → map updates.
+
+Download/export file → JSON matches expected.
+
+🔹 Negative / Edge Cases
+
+Add 100+ points → app should still render without crashing.
+
+Invalid coordinate values in JSON → error shown.
+
+Delete all shapes → JSON is empty.
+
+Undo/Redo operations (if available).
+
+🔹 What Interviewers Expect
+
+Coverage thinking — show you can test not just “happy path” but negative + edge cases.
+
+UI + Functional checks — map, toolbar, editor, search, menus.
+
+Data validation — JSON should match map actions.
+
+Scalability — app should handle many shapes.
+
+CI/CD mindset — run these tests in pipeline.
+
+👉 Suggested initial tests to implement (must-have):
+
+Verify map loads.
+
+Add Point (Mumbai) → check JSON.
+
+Add LineString → check JSON.
+
+Delete shape → JSON empty.
+
+Search "Delhi" → map pans.
+
+Invalid JSON → error.
+
+Then, in README, list other possible cases (even if not implemented). That shows maturity.

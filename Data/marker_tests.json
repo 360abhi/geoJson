@@ -1,0 +1,22 @@
+[
+    {
+      "tc_id": "MARKER_001",
+      "map_url" : "https://geojson.io/#map=3.36/22.14/76.02",
+      "description": "Add marker at Mumbai location and verify Coordinates",
+      "city_name": "Mumbai",
+      "expected_feature": {
+          "coordinates": [72.79197307006262,
+          19.05662314417377]
+        }
+      },
+    {
+      "tc_id": "MARKER_002", 
+      "map_url" : "https://geojson.io/#map=3.36/22.14/76.02",
+      "description": "Add marker at Delhi location and verify Coordinates",
+      "city_name": "Delhi",
+      "expected_feature": {
+          "coordinates": [77.20126207093733,
+          28.531266767857986]
+      }
+    }
+  ]
