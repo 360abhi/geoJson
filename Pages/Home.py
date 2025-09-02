@@ -12,9 +12,11 @@ class Home:
     line = "//button[@title='Draw LineString (l)']"
     polygon = "//button[@title='Draw Polygon (p)']"
     rectangular_polygon = "//button[@title='Draw Rectangular Polygon (r)']"
+    search_input = ".mapboxgl-ctrl-geocoder--input"
 
     coordinates = ".cm-number"
     canvas = "//canvas"
+    map_marker = "//div[@aria-label='Map marker']"
 
     def __init__(self,page:Page):
         self.page = page
@@ -37,7 +39,6 @@ class Home:
         self.page.locator(self.zoomout).click()
         self.page.wait_for_timeout(500)
 
-
     def select_marker_tool(self):
         self.page.locator(self.marker).click()
 
@@ -49,6 +50,12 @@ class Home:
 
     def select_rectangular_polygon_tool(self):
         self.page.locator(self.rectangular_polygon).click()
+
+    def search_location(self, query: str):
+        self.page.type(self.search_input, query)
+        self.page.click("(//div[@class='mapboxgl-ctrl-geocoder--suggestion-title'])[1]",timeout=12000)
+        self.page.wait_for_timeout(500)
+
 
 
     def place_marker_by_ratio(self,city_name: str = ""):

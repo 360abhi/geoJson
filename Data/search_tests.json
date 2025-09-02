@@ -1,0 +1,34 @@
+[
+  {
+    "tc_id": "search_01",
+    "map_url": "https://geojson.io/",
+    "search_query": "Delhi, India",
+    "expected_feature": {
+      "coordinates": [77.093, 28.6442]
+    }
+  },
+  {
+    "tc_id": "search_02",
+    "map_url": "https://geojson.io/",
+    "search_query": "Mumbai, India",
+    "expected_feature": {
+      "coordinates": [72.8571, 19.0625]
+    }
+  },
+  {
+    "tc_id": "search_03",
+    "map_url": "https://geojson.io/",
+    "search_query": "New York, USA",
+    "expected_feature": {
+      "coordinates": [-73.98, 40.6979]
+    }
+  },
+  {
+    "tc_id": "search_04",
+    "map_url": "https://geojson.io/",
+    "search_query": "London, UK",
+    "expected_feature": {
+      "coordinates": [-0.0992, 51.5275]
+    }
+  }
+]

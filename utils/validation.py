@@ -84,6 +84,49 @@ class Validations:
                 )
                 raise
 
+    def verify_search_marker(self, expected_coords: list, tolerance: float = 0.5,initial_url="https://geojson.io/#map=2/0/20"):
+        """
+        Verify that a search placed a marker and map URL has expected coordinates.
+        """
+        with allure.step(f"Verify Search Result Marker at {expected_coords}"):
+            try:
+                # Checking marker exists
+                marker = self.page.locator("//div[@aria-label='Map marker']")
+                assert marker.is_visible(), "Search marker not visible on map"
+                current_url = self.page.url
+                self.page.wait_for_timeout(1000)
+                attempts = 0
+                while current_url == initial_url:
+                    self.page.wait_for_timeout(1000)
+                    attempts += 1
+                    current_url = self.page.url
+                    if attempts > 10:
+                        raise Exception("Search marker not visible on map")
+                parts = current_url.split("#map=")[1].split("/")
+                zoom, lat, lon = float(parts[0]), float(parts[1]), float(parts[2])
+
+                assert abs(lon - expected_coords[0]) <= tolerance, f"Longitude mismatch: {lon} vs {expected_coords[0]}"
+                assert abs(lat - expected_coords[1]) <= tolerance, f"Latitude mismatch: {lat} vs {expected_coords[1]}"
+
+                allure.attach(
+                    f"Expected: {expected_coords}\nActual: [{lon}, {lat}]\nZoom: {zoom}",
+                    name="Search Validation Details",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                allure.attach(
+                    self.page.screenshot(),
+                    name="Search Result Screenshot",
+                    attachment_type=allure.attachment_type.PNG
+                )
+
+            except Exception as e:
+                allure.attach(
+                    str(e),
+                    name="Search Marker Validation Error",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                raise
+
     def validate_zoom_level(self, expected_zoom: int, tc_id: str):
         with allure.step(f"Validate Zoom Level - {tc_id}"):
             self.page.wait_for_load_state(state="networkidle")
