@@ -1,0 +1,10 @@
+[
+  {
+    "tc_id": "load_json_01",
+    "map_url": "https://geojson.io/",
+    "json_file": "../Data/Loadfiles/sample_1.geojson",
+    "expected_feature": {
+      "coordinates": [77.171, 28.641]
+    }
+  }
+]

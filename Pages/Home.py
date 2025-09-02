@@ -13,6 +13,7 @@ class Home:
     polygon = "//button[@title='Draw Polygon (p)']"
     rectangular_polygon = "//button[@title='Draw Rectangular Polygon (r)']"
     search_input = ".mapboxgl-ctrl-geocoder--input"
+    open_menu = "//a[.=' Open']"
 
     coordinates = ".cm-number"
     canvas = "//canvas"
@@ -56,6 +57,13 @@ class Home:
         self.page.click("(//div[@class='mapboxgl-ctrl-geocoder--suggestion-title'])[1]",timeout=12000)
         self.page.wait_for_timeout(500)
 
+    def load_geoJson(self,file_path:str):
+        with self.page.expect_file_chooser() as fc_info:
+            self.page.click(self.open_menu)
+        file_chooser = fc_info.value
+
+        # Set the geojson file
+        file_chooser.set_files(file_path)
 
 
     def place_marker_by_ratio(self,city_name: str = ""):

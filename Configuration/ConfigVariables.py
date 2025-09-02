@@ -12,3 +12,4 @@ class ConfigVariables:
     MARKER_DATA = con.get('FILE','MARKER_TEST_DATA')
     ZOOM_DATA = con.get('FILE', 'ZOOM_TEST_DATA')
     SEARCH_DATA = con.get('FILE', 'SEARCH_TEST_DATA')
+    LOAD_DATA = con.get('FILE', 'LOAD_TEST_DATA')
