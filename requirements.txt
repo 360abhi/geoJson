@@ -1,0 +1,8 @@
+pytest
+pytest-xdist
+pytest-html
+playwright
+pytest-playwright
+allure-pytest
+pathlib
+configparser
