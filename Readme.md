@@ -53,15 +53,24 @@ cd Tests/
 
 pytest {testfile} --alluredir=../allure-results --headed
 
-📂 Project Structure
+## 📂 Project Structure  
+
 geoJson/
+
 │── Browser/             # BrowserManager class for handling browser, context & page creation
+
 │── Configuration/       # Config variables, constants
+
 │── Data/                # JSON test data files
+
 │── Pages/               # Page Object Model (POM) for Map HomePage
+
 │── Tests/               # Test case files
+
 │── utils/               # Common utilities, validations
+
 │── requirements.txt     # Python dependencies
+
 │── README.md            # Documentation
 
 
