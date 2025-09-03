@@ -1,4 +1,4 @@
-🗺️ GeoJSON Test Automation Suite
+## 🗺️ GeoJSON Test Automation Suite
 
 This repository contains automated test cases for verifying GeoJSON map functionalities such as:
 
@@ -19,7 +19,7 @@ This repository contains automated test cases for verifying GeoJSON map function
 Tests are written in Python (Pytest + Playwright) with reporting via Allure..
 
 
-📦 Setup & Installation
+## 📦 Setup & Installation
 
 1️⃣ Clone the Repository
 
