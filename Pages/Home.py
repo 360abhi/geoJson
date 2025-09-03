@@ -20,7 +20,8 @@ class Home:
     add_row = "//div[contains(@class,'add-row-button')]/span"
     property_key_first = """(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string cm-property'])[1]"""
     property_val_first = """(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string'])[1]"""
-
+    delete_feature = "//button[contains(@class,'delete-invert')]"
+    span_feature = """//span[.='"Point"']"""
 
     coordinates = ".cm-number"
     canvas = "//canvas"
@@ -39,18 +40,22 @@ class Home:
             else:
                 self.click_zoom_out()
 
+    def delete_marker(self):
+        self.page.locator(self.map_marker).click()
+        self.page.locator(self.delete_feature).click()
+
     def add_properties(self,properties:dict):
         self.page.locator(self.map_marker).click()
-        keys = properties.keys()
+        keys = list(properties.keys())
         for i in range(len(keys)):
             if i == 0:
                 self.page.locator(self.prop_key).fill(keys[i])
                 self.page.locator(self.prop_val).fill(properties[keys[i]])
             else:
-                self.page.locator(self.add_row)
+                self.page.locator(self.add_row).click()
                 self.page.locator(self.prop_key).fill(keys[i])
                 self.page.locator(self.prop_val).fill(properties[keys[i]])
-        self.page.locator(self.save_btn)
+        self.page.locator(self.save_btn).click()
         self.page.wait_for_timeout(500)
         return len(keys)
 
@@ -58,7 +63,9 @@ class Home:
         values = []
         for i in range(num):
             key = f"""(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string cm-property'])[{i+1}]"""
+            key = self.page.locator(key).text_content().strip('"')
             val = f"""(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string'])[{i+1}]"""
+            val = self.page.locator(val).text_content().strip('"')
             values.append(key)
             values.append(val)
         

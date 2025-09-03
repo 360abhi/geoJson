@@ -1,30 +1,30 @@
 [
   {
-    "tc_id": "tc_01",
+    "tc_id": "zoom_01",
     "map_url": "https://geojson.io/#map=2/0/20",
     "action": "zoom_in;zoom_out;zoom_in",
     "expected_zoom": "3"
   },
   {
-    "tc_id": "tc_02",
+    "tc_id": "zoom_02",
     "map_url": "https://geojson.io/#map=2/0/20",
     "action": "zoom_out;zoom_out",
     "expected_zoom": "0"
   },
   {
-    "tc_id": "tc_03",
+    "tc_id": "zoom_03",
     "map_url": "https://geojson.io/#map=2/0/20",
     "action": "zoom_in;zoom_in;zoom_in",
     "expected_zoom": "5"
   },
   {
-    "tc_id": "tc_04",
+    "tc_id": "zoom_04",
     "map_url": "https://geojson.io/#map=2/0/20",
     "action": "zoom_out",
     "expected_zoom": "1"
   },
   {
-    "tc_id": "tc_05",
+    "tc_id": "zoom_05",
     "map_url": "https://geojson.io/#map=2/0/20",
     "action": "zoom_in;zoom_in;zoom_out",
     "expected_zoom": "3"

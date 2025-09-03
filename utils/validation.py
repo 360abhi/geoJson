@@ -10,6 +10,25 @@ class Validations:
         self.page = page
         self.timeout = timeout
 
+    def verify_delete_marker_in_map(self):
+        with allure.step('Verify delete marker in map'):
+            try:
+                self.page.wait_for_timeout(500)
+                assert self.page.locator("//span[text()='\"Point\"']").count() == 0,"Deletion Failed"
+                allure.attach(
+                    self.page.screenshot(full_page=True),
+                    name=f"Verify Delete Marker",
+                    attachment_type=allure.attachment_type.PNG
+                )
+            except Exception as e:
+                allure.attach(
+                    str(e),
+                    name=f"Verify Delete Marker",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                raise
+
+
     def verify_marker_exist_in_map(self):
          with allure.step(f"Verify Marker"):
             try:

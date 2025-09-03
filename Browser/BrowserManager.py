@@ -22,8 +22,7 @@ class BrowserManager:
 
         context = self.browser.new_context(
             record_video_dir=f"{root_dir}/videos/",
-            viewport={"width": 1280, "height": 720},
-            record_video_size={"width": 1920, "height": 1080}
+            viewport={"width": 1280, "height": 720}
         )
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         print(f"Started tracing for {unique_id}")

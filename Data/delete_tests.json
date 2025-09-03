@@ -1,0 +1,7 @@
+[
+  {
+    "tc_id": "delete_01",
+    "map_url": "https://geojson.io/#map=2/0/20",
+    "shape": "marker"
+  }
+]
