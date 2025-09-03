@@ -59,9 +59,8 @@ class Home:
         self.page.wait_for_timeout(500)
         return len(keys)
 
-    def draw_line(self, coordinates: list):
+    def draw_shape(self, coordinates: list):
 
-        self.select_line_tool()
         box = self.page.locator(self.canvas).bounding_box()
 
         for idx, (lat, lon) in enumerate(coordinates):

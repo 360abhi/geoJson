@@ -1,0 +1,33 @@
+[
+  {
+    "tc_id": "POLYGON_001",
+    "map_url": "https://geojson.io/#map=2/0/20",
+    "coordinates": [
+      [172.8777, 150.0760],
+      [500.8850, 347.0900],
+      [300.8850, 533.0900]
+    ],
+    "expected_feature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon"
+      }
+    }
+  },
+  {
+    "tc_id": "POLYGON_002",
+    "map_url": "https://geojson.io/#map=2/0/20",
+    "coordinates": [
+      [432.8777, 567.0760],
+      [500.8850, 347.0900],
+      [300.8850, 233.0900],
+      [200.8850, 213.0900]
+    ],
+    "expected_feature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon"
+      }
+    }
+  }
+]

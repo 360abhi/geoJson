@@ -46,6 +46,24 @@ class Validations:
                 )
                 raise
 
+    def verify_polygon_in_map(self):
+        with allure.step('Verify Polygon in map'):
+            try:
+                self.page.wait_for_timeout(500)
+                assert self.page.locator("""//span[text()='"Polygon"']""").count() > 0, "Polygon Verification Failed"
+                allure.attach(
+                    self.page.screenshot(full_page=True),
+                    name=f"Polygon Verification",
+                    attachment_type=allure.attachment_type.PNG
+                )
+            except Exception as e:
+                allure.attach(
+                    str(e),
+                    name=f"Polygon Verification",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                raise
+
 
 
     def verify_marker_exist_in_map(self):

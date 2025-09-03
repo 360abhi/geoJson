@@ -16,4 +16,5 @@ class ConfigVariables:
     PROPERTY_DATA = con.get('FILE','PROPERTY_TEST_DATA')
     DELETE_DATA = con.get('FILE', 'DELETE_DATA')
     LINE_DATA = con.get('FILE', 'LINE_TEST_DATA')
+    POLYGON_DATA = con.get('FILE', 'POLYGON_TEST_DATA')
     
