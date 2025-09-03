@@ -94,6 +94,8 @@ Zoom Validation → Confirms zoom level in URL matches expected.
 
 Property Validation → Compares key/value properties between expected & actual.
 
+Invalid JSON Validation → Verifies error marker appears when an invalid GeoJSON file is uploaded.
+
 **All validations:**
 
 Attach screenshots for visual confirmation.
