@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 ️playwright install
 
-▶️ Running All Tests at Once
+▶️ Running All Tests at Once and Generate Allure Reports
 
 cd Tests/
 
