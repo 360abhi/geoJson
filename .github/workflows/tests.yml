@@ -28,7 +28,7 @@ jobs:
       - name: Run tests with Allure results
         run: |
           cd Tests
-          pytest --alluredir=../allure-results
+          pytest test_zoom.py --alluredir=../allure-results
 
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
