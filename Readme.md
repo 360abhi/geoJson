@@ -39,7 +39,7 @@ pip install -r requirements.txt
 
 cd Tests/
 
-pytest --alluredir=../allure-results --headed
+pytest --alluredir=../allure-results
 
 cd ..
 
@@ -51,7 +51,7 @@ allure open .\allure-report\
 
 cd Tests/
 
-pytest {testfile} --alluredir=../allure-results --headed
+pytest {testfile} --alluredir=../allure-results
 
 ## 📂 Project Structure  
 
