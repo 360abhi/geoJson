@@ -27,7 +27,8 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest Tests/test_zoom.py --alluredir=allure-results
+          cd Tests/
+          pytest test_zoom.py --alluredir=../allure-results
 
       - name: Install Allure CLI
         run: |
