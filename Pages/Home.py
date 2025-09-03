@@ -18,8 +18,8 @@ class Home:
     prop_val = "(//td/input[@type='text'])[last()]"
     save_btn = "//button[@type='submit']"
     add_row = "//div[contains(@class,'add-row-button')]/span"
-    property_key_first = "(//span[@class='cm-string cm-property' and text()='properties']/../../../following-sibling::div/pre/span/span[@class='cm-string cm-property'])[1]"
-    property_val_first = "(//span[@class='cm-string cm-property' and text()='properties']/../../../following-sibling::div/pre/span/span[@class='cm-string'])[1]"
+    property_key_first = """(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string cm-property'])[1]"""
+    property_val_first = """(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string'])[1]"""
 
 
     coordinates = ".cm-number"
@@ -52,6 +52,17 @@ class Home:
                 self.page.locator(self.prop_val).fill(properties[keys[i]])
         self.page.locator(self.save_btn)
         self.page.wait_for_timeout(500)
+        return len(keys)
+
+    def fetch_properties(self,num:int):
+        values = []
+        for i in range(num):
+            key = f"""(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string cm-property'])[{i+1}]"""
+            val = f"""(//span[@class='cm-string cm-property' and text()='"properties"']/../../../following-sibling::div/pre/span/span[@class='cm-string'])[{i+1}]"""
+            values.append(key)
+            values.append(val)
+        
+        return values
 
 
     def click_zoom_in(self):

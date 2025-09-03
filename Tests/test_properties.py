@@ -10,7 +10,7 @@ from utils.validation import Validations
 from Pages.Home import Home
 from Configuration.ConfigVariables import ConfigVariables
 
-@pytest.mark.parametrize("test_case", CommonUtils().load(ConfigVariables.MARKER_DATA))
+@pytest.mark.parametrize("test_case", CommonUtils().load(ConfigVariables.PROPERTY_DATA))
 def test_properties(page: Page, test_case):
     try:
         validations = Validations(page)
@@ -20,8 +20,10 @@ def test_properties(page: Page, test_case):
         home.select_marker_tool()
         home.place_marker_by_ratio()
         validations.verify_marker_exist_in_map()
-        home.add_properties(properties=test_case['properties'])
-        
+        num = home.add_properties(properties=test_case['properties'])
+        actual_list = home.fetch_properties(num)
+        expected_list = [item for pair in test_case['properties'].items() for item in pair]
+        validations.validate_properties(expected=expected_list,actual=actual_list)
     except Exception as exc:
         print(str(exc))
         raise exc
