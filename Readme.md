@@ -2,21 +2,21 @@
 
 This repository contains automated test cases for verifying GeoJSON map functionalities such as:
 
-Map loading
+✅ Map loading
 
-Marker placement & deletion
+✅ Marker placement & deletion
 
-Polygon & Line drawing
+✅ Polygon & Line drawing
 
-Search functionality
+✅ Search functionality
 
-Zoom controls
+✅ Zoom controls
 
-File upload
+✅ File upload
 
-Property editing
+✅ Property editing
 
-Tests are written in Python (Pytest + Playwright) and reporting is done via Allure.
+Tests are written in Python (Pytest + Playwright) with reporting via Allure..
 
 
 📦 Setup & Installation
@@ -53,8 +53,16 @@ cd Tests/
 
 pytest {testfile} --alluredir=../allure-results --headed
 
-
-
+📂 Project Structure
+geoJson/
+│── Browser/             # BrowserManager class for handling browser, context & page creation
+│── Configuration/       # Config variables, constants
+│── Data/                # JSON test data files
+│── Pages/               # Page Object Model (POM) for Map HomePage
+│── Tests/               # Test case files
+│── utils/               # Common utilities, validations
+│── requirements.txt     # Python dependencies
+│── README.md            # Documentation
 
 
 
