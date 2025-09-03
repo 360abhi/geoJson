@@ -40,9 +40,18 @@ class Home:
                 self.click_zoom_out()
 
     def add_properties(self,properties:dict):
+        self.page.locator(self.map_marker).click()
         keys = properties.keys()
         for i in range(len(keys)):
-
+            if i == 0:
+                self.page.locator(self.prop_key).fill(keys[i])
+                self.page.locator(self.prop_val).fill(properties[keys[i]])
+            else:
+                self.page.locator(self.add_row)
+                self.page.locator(self.prop_key).fill(keys[i])
+                self.page.locator(self.prop_val).fill(properties[keys[i]])
+        self.page.locator(self.save_btn)
+        self.page.wait_for_timeout(500)
 
 
     def click_zoom_in(self):
@@ -79,12 +88,13 @@ class Home:
         file_chooser.set_files(file_path)
 
 
-    def place_marker_by_ratio(self,city_name: str = ""):
+    def place_marker_by_ratio(self,city_name: str = "default"):
         """Click using predetermined ratios for known cities"""
         # Pre-calculated ratios for Indian cities
         city_ratios = {
             "mumbai": {"x_ratio": 0.43, "y_ratio": 0.5875},
             "delhi": {"x_ratio": 0.525, "y_ratio": 0.32},
+            "default":{"x_ratio":0.1, "y_ratio": 0.1}
         }
 
         # Get ratios for the city or use [1,1]

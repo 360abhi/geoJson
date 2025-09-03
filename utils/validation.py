@@ -10,6 +10,29 @@ class Validations:
         self.page = page
         self.timeout = timeout
 
+    def verify_marker_exist_in_map(self):
+         with allure.step(f"Verify Marker"):
+            try:
+                self.page.wait_for_timeout(500)
+                # Checking marker exists
+                marker = self.page.locator("//div[@aria-label='Map marker']")
+                assert marker.is_visible(), "Marker not visible on map"
+
+                allure.attach(
+                        self.page.screenshot(full_page=True),
+                        name=f"Verify Marker",
+                        attachment_type=allure.attachment_type.PNG
+                    )
+
+            except Exception as e:
+                allure.attach(
+                    str(e),
+                    name="Marker Validation",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                raise
+
+
     def verify_marker_exists_in_editor(self, expected_coords: list, tolerance: float = 0.001):
         """
         Assert that marker coordinates exist in CodeMirror editor DOM.
@@ -158,6 +181,35 @@ class Validations:
                 allure.attach(
                     str(e),
                     name="Zoom Validation Error",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                raise
+
+    def validate_properties(self,expected:list,actual:list):
+        with allure.step("Validate Properties"):
+            try:
+                for val1,val2 in zip(expected,actual):
+                    assert val1.lower().strip() == val2.lower().strip(),f"Longitude mismatch: {val1} vs {val2}"
+                    allure.attach(
+                        self.page.screenshot(full_page=True),
+                        name=f"Validate Properties",
+                        attachment_type=allure.attachment_type.PNG
+                    )
+                    allure.attach(
+                        f"Expected: {val1}, Actual: {val2}",
+                        name=f"Validate Properties",
+                        attachment_type=allure.attachment_type.TEXT
+                    )
+
+            except AssertionError as e:
+                allure.attach(
+                    self.page.screenshot(full_page=True),
+                    name=f"Validate Properties",
+                    attachment_type=allure.attachment_type.PNG
+                )
+                allure.attach(
+                    str(e),
+                    name="Validate Properties",
                     attachment_type=allure.attachment_type.TEXT
                 )
                 raise
