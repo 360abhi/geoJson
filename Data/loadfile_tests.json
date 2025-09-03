@@ -3,8 +3,18 @@
     "tc_id": "load_json_01",
     "map_url": "https://geojson.io/",
     "json_file": "../Data/Loadfiles/sample_1.geojson",
+    "type": "Positive",
     "expected_feature": {
       "coordinates": [77.171, 28.641]
+    }
+  },
+  {
+    "tc_id": "load_json_02",
+    "map_url": "https://geojson.io/",
+    "json_file": "../Data/Loadfiles/invalid.geojson",
+    "type": "Negative",
+    "expected_feature": {
+      "expected_message": "Invalid JSON file: TypeError: Cannot read properties of undefined (reading 'coordinates')"
     }
   }
 ]

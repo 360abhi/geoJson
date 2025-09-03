@@ -20,7 +20,10 @@ def test_loadfile(page: Page, test_case):
         page.goto(test_case['map_url'])
         validations.validate_map_loaded(test_case['tc_id'])
         home.load_geoJson(test_case['json_file'])
-        validations.verify_search_marker(expected_coords=test_case['expected_feature']['coordinates'])
+        if test_case['type'] == "Negative":
+            validations.invalid_json_alert()
+        else:
+            validations.verify_search_marker(expected_coords=test_case['expected_feature']['coordinates'])
     except Exception as exc:
         print(str(exc))
         raise exc

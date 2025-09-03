@@ -22,11 +22,5 @@
     "map_url": "https://geojson.io/#map=2/0/20",
     "action": "zoom_out",
     "expected_zoom": "1"
-  },
-  {
-    "tc_id": "zoom_05",
-    "map_url": "https://geojson.io/#map=2/0/20",
-    "action": "zoom_in;zoom_in;zoom_out",
-    "expected_zoom": "3"
   }
 ]

@@ -1,7 +1,6 @@
 from playwright.sync_api import Page
 import allure
 from datetime import datetime
-import re
 
 
 class Validations:
@@ -158,6 +157,52 @@ class Validations:
                 )
                 raise
 
+    def invalid_json_alert(self):
+        with allure.step("Invalid JSON Error"):
+            try:
+                self.page.wait_for_timeout(500)
+                assert self.page.locator(".error-marker").count() > 0, "Invalid Json Validation Failed"
+                allure.attach(
+                    self.page.screenshot(full_page=True),
+                    name="Invalid Json Validation Success",
+                    attachment_type=allure.attachment_type.PNG
+                )
+            except Exception as e:
+
+                allure.attach(
+                    self.page.screenshot(full_page=True),
+                    name=f"Invalid Json Validation Failed {str(e)}",
+                    attachment_type=allure.attachment_type.PNG
+                )
+                raise
+
+
+        # def handle_dialog(dialog):
+        #     try:
+        #         assert expected_message in dialog.message, (
+        #             f"Unexpected alert message: {dialog.message}"
+        #         )
+        #         allure.attach(
+        #             dialog.message,
+        #             name="Alert Message",
+        #             attachment_type=allure.attachment_type.TEXT
+        #         )
+        #         screenshot_bytes = self.page.screenshot()
+        #         allure.attach(
+        #             screenshot_bytes,
+        #             name=f"Alert Message - {dialog.message}",
+        #             attachment_type=allure.attachment_type.PNG
+        #         )
+        #         dialog.accept()
+        #     except Exception as e:
+        #         screenshot_bytes = self.page.screenshot()
+        #         allure.attach(
+        #             screenshot_bytes,
+        #             name=f"Alert Message Fail- {str(e)}",
+        #             attachment_type=allure.attachment_type.PNG
+        #         )
+        #         raise
+
     def verify_search_marker(self, expected_coords: list, tolerance: float = 0.5,initial_url="https://geojson.io/#map=2/0/20"):
         with allure.step(f"Verify Search Result Marker at {expected_coords}"):
             try:
@@ -217,6 +262,12 @@ class Validations:
                 allure.attach(
                     f"Expected: {expected_zoom}, Actual: {actual_zoom}",
                     name=f"Zoom Values - {tc_id}",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                current_url = self.page.url
+                allure.attach(
+                    current_url,
+                    name=f"URL for - {tc_id}",
                     attachment_type=allure.attachment_type.TEXT
                 )
 
