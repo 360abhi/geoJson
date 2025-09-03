@@ -74,6 +74,7 @@ geoJson/
 │── README.md            # Documentation
 
 
+
 ## Key Validation Points
 
 
@@ -98,8 +99,6 @@ Property Validation → Compares key/value properties between expected & actual.
 Attach screenshots for visual confirmation.
 
 Attach expected vs actual details as text in Allure.
-
-Fail gracefully with detailed errors.
 
 
 
