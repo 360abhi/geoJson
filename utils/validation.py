@@ -28,6 +28,25 @@ class Validations:
                 )
                 raise
 
+    def verify_line_in_map(self):
+        with allure.step('Verify line in map'):
+            try:
+                self.page.wait_for_timeout(500)
+                assert self.page.locator("//span[text()='\"LineString\"']").count() > 0, "Line Verification Failed"
+                allure.attach(
+                    self.page.screenshot(full_page=True),
+                    name=f"Line Verification",
+                    attachment_type=allure.attachment_type.PNG
+                )
+            except Exception as e:
+                allure.attach(
+                    str(e),
+                    name=f"Line Verification",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+                raise
+
+
 
     def verify_marker_exist_in_map(self):
          with allure.step(f"Verify Marker"):
@@ -53,10 +72,6 @@ class Validations:
 
 
     def verify_marker_exists_in_editor(self, expected_coords: list, tolerance: float = 0.001):
-        """
-        Assert that marker coordinates exist in CodeMirror editor DOM.
-        expected_coords: [longitude, latitude]
-        """
         with allure.step(f"Verify Marker Exists - {expected_coords}"):
             try:
                 numbers = self.page.locator(".cm-number").all_inner_texts()
@@ -95,7 +110,6 @@ class Validations:
                 raise
 
     def validate_map_loaded(self, tcid: str = None):
-        """Assert that the map loaded successfully"""
         with allure.step(f"Validate Map Loaded - {tcid}"):
             try:
                 self.page.wait_for_timeout(1000)
@@ -127,9 +141,6 @@ class Validations:
                 raise
 
     def verify_search_marker(self, expected_coords: list, tolerance: float = 0.5,initial_url="https://geojson.io/#map=2/0/20"):
-        """
-        Verify that a search placed a marker and map URL has expected coordinates.
-        """
         with allure.step(f"Verify Search Result Marker at {expected_coords}"):
             try:
                 # Checking marker exists

@@ -3,17 +3,13 @@
     "tc_id": "LINE_001",
     "map_url": "https://geojson.io/#map=2/0/20",
     "coordinates": [
-      [72.8777, 19.0760],
-      [72.8850, 19.0900]
+      [172.8777, 50.0760],
+      [500.8850, 50.0900]
     ],
     "expected_feature": {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [72.8777, 19.0760],
-          [72.8850, 19.0900]
-        ]
+        "type": "LineString"
       }
     }
   },
@@ -21,19 +17,13 @@
     "tc_id": "LINE_002",
     "map_url": "https://geojson.io/#map=2/0/20",
     "coordinates": [
-      [77.1025, 28.7041],
-      [77.1100, 28.7100],
-      [77.1200, 28.7200]
+      [272.8777, 150.0760],
+      [772.8850, 250.0900]
     ],
     "expected_feature": {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [77.1025, 28.7041],
-          [77.1100, 28.7100],
-          [77.1200, 28.7200]
-        ]
+        "type": "LineString"
       }
     }
   },
@@ -41,21 +31,14 @@
     "tc_id": "LINE_003",
     "map_url": "https://geojson.io/#map=2/0/20",
     "coordinates": [
-      [77.5946, 12.9716],
-      [77.6000, 12.9750],
-      [77.6100, 12.9800],
-      [77.6200, 12.9850]
+      [272.8777, 150.0760],
+      [772.8850, 250.0900],
+      [572.8850, 500.0900]
     ],
     "expected_feature": {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [77.5946, 12.9716],
-          [77.6000, 12.9750],
-          [77.6100, 12.9800],
-          [77.6200, 12.9850]
-        ]
+        "type": "LineString"
       }
     }
   }

@@ -15,4 +15,5 @@ class ConfigVariables:
     LOAD_DATA = con.get('FILE', 'LOAD_TEST_DATA')
     PROPERTY_DATA = con.get('FILE','PROPERTY_TEST_DATA')
     DELETE_DATA = con.get('FILE', 'DELETE_DATA')
+    LINE_DATA = con.get('FILE', 'LINE_TEST_DATA')
     
