@@ -74,5 +74,34 @@ geoJson/
 │── README.md            # Documentation
 
 
+## Key Validation Points
+
+
+Map Load Validation → Checks map canvas existence and visibility.
+
+Marker Validation → Ensures marker exists
+
+Delete Marker Validation → Ensures no "Point" node exists in editor.
+
+Line Validation → Verifies "LineString" node presence.
+
+Polygon Validation → Verifies "Polygon" node presence.
+
+Search Validation → Ensures map moves to expected lat/lon after search.
+
+Zoom Validation → Confirms zoom level in URL matches expected.
+
+Property Validation → Compares key/value properties between expected & actual.
+
+**All validations:**
+
+Attach screenshots for visual confirmation.
+
+Attach expected vs actual details as text in Allure.
+
+Fail gracefully with detailed errors.
+
+
+
 
 
