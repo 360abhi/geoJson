@@ -1,0 +1,44 @@
+[
+  {
+    "tc_id": "props_01",
+    "map_url": "https://geojson.io/#map=2/0/20",
+    "shape": "marker",
+    "coordinates": [250, 250],
+    "properties": {
+      "name": "Test Marker",
+      "category": "POI"
+    },
+    "expected_properties": {
+      "name": "Test Marker",
+      "category": "POI"
+    }
+  },
+  {
+    "tc_id": "props_02",
+    "map_url": "https://geojson.io/#map=2/0/20",
+    "shape": "marker",
+    "coordinates": [300, 200],
+    "properties": {
+      "population": "75"
+    },
+    "expected_properties": {
+      "population": "75"
+    }
+  },
+  {
+    "tc_id": "props_03",
+    "map_url": "https://geojson.io/#map=2/0/20",
+    "shape": "marker",
+    "coordinates": [200, 300],
+    "properties": {
+      "name": "River Point",
+      "type": "Hydrology",
+      "elevation": "150m"
+    },
+    "expected_properties": {
+      "name": "River Point",
+      "type": "Hydrology",
+      "elevation": "150m"
+    }
+  }
+]

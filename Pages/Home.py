@@ -14,6 +14,13 @@ class Home:
     rectangular_polygon = "//button[@title='Draw Rectangular Polygon (r)']"
     search_input = ".mapboxgl-ctrl-geocoder--input"
     open_menu = "//a[.=' Open']"
+    prop_key = "(//th/input[@type='text'])[last()]"
+    prop_val = "(//td/input[@type='text'])[last()]"
+    save_btn = "//button[@type='submit']"
+    add_row = "//div[contains(@class,'add-row-button')]/span"
+    property_key_first = "(//span[@class='cm-string cm-property' and text()='properties']/../../../following-sibling::div/pre/span/span[@class='cm-string cm-property'])[1]"
+    property_val_first = "(//span[@class='cm-string cm-property' and text()='properties']/../../../following-sibling::div/pre/span/span[@class='cm-string'])[1]"
+
 
     coordinates = ".cm-number"
     canvas = "//canvas"
@@ -31,6 +38,12 @@ class Home:
                 self.click_zoom_in()
             else:
                 self.click_zoom_out()
+
+    def add_properties(self,properties:dict):
+        keys = properties.keys()
+        for i in range(len(keys)):
+
+
 
     def click_zoom_in(self):
         self.page.locator(self.zoomin).click()
